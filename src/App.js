@@ -1,20 +1,13 @@
 import React,{Component} from 'react';
-import {DISHES} from './shared/dishes';
 import './App.css';
-import Menu from './components/MenuComponent';
+import Main from '../src/components/MainComponent';
 
 class App extends Component{
-constructor(props){
-  super(props);
-  this.state={
-    dishes:DISHES
-  }
-}
-  render(){
+  render() {
     return (
-       <div>
-         <Menu dishes={this.state.dishes}/>
-       </div>
+      <div className="App">
+        <Main />
+      </div>
     );
   }
 
