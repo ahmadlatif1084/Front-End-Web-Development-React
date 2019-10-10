@@ -2,11 +2,13 @@ import React from 'react';
 import {Card,CardBody,CardImg,CardText,CardTitle,BreadcrumbItem,Breadcrumb} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
-function RenderDish(dish) {
+function RenderDish({dish}) {
+    console.log("Render Dish");
+    console.log(dish);
     return (
         <div className="col-12 col-md-5 m-1">
         <Card>
-            <CardImg top src={dish.image} alt={dish.name}/>
+        <CardImg src={dish.image} alt={dish.name}></CardImg>
             <CardBody>
                 <CardTitle>{dish.name}</CardTitle>
                 <CardText>{dish.description}</CardText>
@@ -15,22 +17,7 @@ function RenderDish(dish) {
         </div>
     );
 }
-function RenderComments(comments){
-    console.log(comments);
-    return false;
-    const comments_new = comments.map((comment) => {
-        return (
-            <li key={comments.id}>
-            <p>{comments.comment}</p>
-            <p>-- {comments.author}, {new Intl.DateTimeFormat('en-US', {
-          month: 'long',
-          day: '2-digit',
-          year: 'numeric',
-      }).format(new Date(comments.date))}</p>
-        </li>
-        );
-    });
-    return false;
+function RenderComments({comments}){
    if(comments!=null){
        return(
            <div className="col-12 col-md-5 m-1">
