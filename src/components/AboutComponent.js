@@ -3,20 +3,33 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 
 function RenderLeader({leader}){
-return(
-    <div class="media">
-  <img class="align-self-center mr-3" src="..." alt="Generic placeholder image"></img>
-  <div class="media-body">
-    <h5 class="mt-0">Center-aligned media</h5>
-    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-    <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-  </div>
-</div>
+    console.log(leader);
+// return false;
+if(leader!=null){
+return (
+    <div>
+        {leader.map((leader)=>{
+            return (
+                <Media>
+                    <Media left top href="#">
+                        <Media object src={leader.image} alt={leader.name} />
+                    </Media>
+                    <Media body>
+                        <Media heading>
+                           {leader.name}
+                        </Media>
+                        {leader.description}
+                    </Media>
+                </Media>
+            );
+        })}
+    </div>
+
 );
+}
 }
 function About(props) {
 
-    console.log(props.leaders);
     const leaders = props.leaders.map((leader) => {
         return (
             <p>Leader {leader.name}</p>
@@ -84,7 +97,7 @@ function About(props) {
                 </div>
 
                 <div className="col-12">
-                   <RenderLeader leader={props}/>
+                   <RenderLeader leader={props.leaders}/>
                 </div>
                 
             </div>

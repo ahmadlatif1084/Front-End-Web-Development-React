@@ -47,8 +47,6 @@ function RenderComments({comments}){
         );
     }
     else{
-        console.log(props.dish);
-        console.log(props.comments);
        return (
            <div className="container">
          <div className="row">
