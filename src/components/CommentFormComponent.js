@@ -82,7 +82,7 @@ return (
             validators = {{
                 required,
                 minLength:minLength(3),
-                maxLength:maxLength(7)
+                maxLength:maxLength(15)
             }}/>
 
 <Errors className="text-danger" model=".comment" show="touched"
