@@ -12,7 +12,10 @@ function RenderCard({item,isLoading,errMess}){
       return(
         <h4>{errMess}</h4>
       );
-    }else
+    }else{
+      console.log("props item");
+      console.log(item);
+      // return false;
         return (
           <FadeTransform in transformProps={{
              exitTransform:'scale(0.5) translateY(-50%)' 
@@ -27,6 +30,7 @@ function RenderCard({item,isLoading,errMess}){
         </Card>
         </FadeTransform>
         );
+    }
 }
 
 function Home(props) {

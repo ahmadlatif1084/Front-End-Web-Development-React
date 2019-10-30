@@ -151,9 +151,9 @@ export const postComment = (dishId,rating,author,comment) => (dispatch) =>{
 
 };
 
-    export const addleader = (leader) =>({
+    export const addleader = (leaders) =>({
         type:ActionTypes.ADD_LEADERS,
-        payload:leader
+        payload:leaders
     });
 
     export const fetchLeaders =() => (dispatch) => {
@@ -173,7 +173,7 @@ export const postComment = (dishId,rating,author,comment) => (dispatch) =>{
                 throw errmess;
               })
               .then(response => response.json())
-              .then(leaders => dispatch(addleader(Leaders)))
+              .then(leaders => dispatch(addleader(leaders)))
               .catch(error => dispatch(leadersFailed(error.message))) 
     };
     export const leadersLoading = () => ({
