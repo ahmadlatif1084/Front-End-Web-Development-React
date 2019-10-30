@@ -8,7 +8,7 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent'
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreaters';
+import { postComment, fetchDishes, fetchComments, fetchPromos,fetchLeaders } from '../redux/ActionCreaters';
 import {actions} from 'react-redux-form';
 import {TransitionGroup,CSSTransition} from 'react-transition-group';
 
@@ -51,7 +51,7 @@ class Main extends Component{
                       promotion={this.props.promotions.promotions.filter((promo)=>promo.featured)[0]}
                       promoLoading={this.props.promotions.isLoading}
                       promoErrMess={this.props.promotions.errMess}
-                      leader={this.props.leaders.filter((leader)=>leader.featured)[0]}
+                      leader={this.props.leaders.leaders.filter((leader)=>leader.featured)[0]}
                 />
             );
           }

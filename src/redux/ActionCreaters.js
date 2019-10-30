@@ -1,5 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import { Leaders } from './leaders';
+
 
 
 
@@ -31,7 +33,7 @@ export const fetchDishes = () => (dispatch) => {
     .catch(error => dispatch(dishesFailed(error.message)));
 }
 
-export const dishesLoading= () =>({
+export const dishesLoading = () =>({
     type:ActionTypes.DISHES_LOADING
 });
 
@@ -147,4 +149,40 @@ export const postComment = (dishId,rating,author,comment) => (dispatch) =>{
         alert('Your comment could not be posted\n Error' + error.message);
       });
 
-}
+};
+
+    export const addleader = (leader) =>({
+        type:ActionTypes.ADD_LEADERS,
+        payload:leader
+    });
+
+    export const fetchLeaders =() => (dispatch) => {
+      dispatch(leadersLoading(true));
+      return fetch(baseUrl + 'leaders')
+              .then(response=>{
+                if(response.ok){
+                  return response;
+                }else{
+                  var error= new Error('Error' + response.status + ': ' + response.statusText);
+                      error.response=response;
+                      throw error;
+                }
+              },
+              error=>{
+                var errmess= new Error(error.message);
+                throw errmess;
+              })
+              .then(response => response.json())
+              .then(leaders => dispatch(addleader(Leaders)))
+              .catch(error => dispatch(leadersFailed(error.message))) 
+    };
+    export const leadersLoading = () => ({
+        type:ActionTypes.LEADERS_LOADING
+    });
+
+    export const leadersFailed = (errmess) => ({
+      type: ActionTypes.LEADERS_FAILED,
+      payload: errmess
+    });
+
+    
