@@ -8,7 +8,7 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent'
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { postComment, fetchDishes, fetchComments, fetchPromos,fetchLeaders, leadersLoading } from '../redux/ActionCreaters';
+import { postComment, fetchDishes, fetchComments, fetchPromos,fetchLeaders,postFeedback } from '../redux/ActionCreaters';
 import {actions} from 'react-redux-form';
 import {TransitionGroup,CSSTransition} from 'react-transition-group';
 
@@ -27,7 +27,8 @@ const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
   fetchComments: () => dispatch(fetchComments()),
   fetchPromos: () => dispatch(fetchPromos()),
-  fetchLeaders: () => dispatch(fetchLeaders())
+  fetchLeaders: () => dispatch(fetchLeaders()),
+  postFeedback:(firstname,lastname,telnum,email,agree,contactType,message)=>dispatch(postFeedback(firstname,lastname,telnum,email,agree,contactType,message))
 });
 
 class Main extends Component{
@@ -62,7 +63,7 @@ class Main extends Component{
         //   Functional Component
           const ContactPage=()=>{
             return (
-                <Contact resetFeedbackForm={this.props.resetFeedbackForm}/>
+                <Contact postFeedback={this.props.postFeedback}/>
             );
           }
           const AboutPage=()=>{
