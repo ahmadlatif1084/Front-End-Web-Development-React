@@ -3,10 +3,14 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import {baseUrl} from '../shared/baseUrl';
 import {TransitionGroup,CSSTransition} from 'react-transition-group';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components';
 function RenderLeader({leader}){
     return (
+        <FadeTransform in transformProps={{
+            exitTransform:'scale(0.5 translateX(-50%))'
+        }}>
         <TransitionGroup>
-        <CSSTransition key ={leader.id} classNames="page" timeout={200}>
+        <CSSTransition key ={leader.id} classNames="page" timeout={100}>
       <Media tag="li" key={leader.id}>
         <Media left middle>
           <Media object src={baseUrl+leader.image} alt={leader.name} />
@@ -19,6 +23,7 @@ function RenderLeader({leader}){
       </Media>
       </CSSTransition>
             </TransitionGroup>
+            </FadeTransform>
     );
   };
 

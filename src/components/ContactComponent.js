@@ -17,7 +17,7 @@ class Contact extends Component{
         console.log(values);
         console.log("Current State is " + JSON.stringify(values));
         // alert("Current State is " + JSON.stringify(values));
-        alert(this.props.postFeedback(values.firstname,values.lastname,values.telnum,values.email,values.agree,values.contactType,values.message));
+        alert("Feedback is submitted" + JSON.stringify(this.props.postFeedback(values.firstname,values.lastname,values.telnum,values.email,values.agree,values.contactType,values.message)));
         // event.preventDefault();
     }
     render() {
